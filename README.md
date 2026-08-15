@@ -26,11 +26,11 @@ AI-Powered Health Assistant is a machine learning-based web application that pre
 - `requirements.txt` – Dependencies
 
 ## Live Demo
-[Add your Streamlit app URL here]
+https://ai-powered-health-assistant-4nzwtih7l9vn5vp4appzkht.streamlit.app/ 
 
 ## Team
-- Your Name
-- Teammate Name
+- Sharvari Umesh Mhaske
+- Pranali Shuddhodhan Mohod
 
 ## Disclaimer
 This application is intended for educational purposes only and should not replace professional medical advice.
