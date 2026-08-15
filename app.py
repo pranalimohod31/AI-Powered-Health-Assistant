@@ -1,12 +1,32 @@
 import streamlit as st
 import joblib
+from groq import Groq 
 
 # Load the trained model files
 model = joblib.load("models/health_model.pkl")
 label_encoder = joblib.load("models/label_encoder.pkl")
 symptoms = joblib.load("models/symptoms.pkl")
 
+client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+
 # Page settings
+# Sidebar
+with st.sidebar:
+    st.title("🏥 AI Health Assistant")
+    st.write("### About")
+    st.write(
+        "This application uses machine learning to predict "
+        "a possible disease based on selected symptoms."
+    )
+
+    st.divider()
+
+    st.write("### ⚠️ Important")
+    st.write(
+        "This tool is for educational purposes only. "
+        "It does not replace professional medical advice."
+    )
+
 st.set_page_config(
     page_title="AI Health Assistant",
     page_icon="🏥",
@@ -17,22 +37,29 @@ st.title("🏥 AI-Powered Health Assistant")
 st.write("Select your symptoms to get a predicted disease.")
 
 # Symptom selection
+st.subheader("🩺 Symptom Checker")
+st.write("Select the symptoms you are experiencing:")
+
 selected_symptoms = st.multiselect(
-    "Select your symptoms:",
-    symptoms
+    "Symptoms",
+    symptoms,
+    placeholder="Choose one or more symptoms..."
 )
 
+if selected_symptoms:
+    st.info(f"✅ {len(selected_symptoms)} symptom(s) selected")
+
+
 # Prediction button
-if st.button("🔍 Predict Disease"):
+if st.button("🔍 Predict Disease", type="primary", use_container_width=True):
 
     if not selected_symptoms:
         st.warning("Please select at least one symptom.")
 
     else:
-        # Create input with all symptoms set to 0
+        # Create input data
         input_data = [0] * len(symptoms)
 
-        # Set selected symptoms to 1
         for symptom in selected_symptoms:
             index = symptoms.index(symptom)
             input_data[index] = 1
@@ -50,17 +77,24 @@ if st.button("🔍 Predict Disease"):
         else:
             confidence = None
 
+        # Prediction result
+        st.subheader("🔎 Prediction Result")
+
         st.success(f"Predicted Disease: **{disease}**")
 
         if confidence is not None:
-            st.metric("Prediction Confidence", f"{confidence:.2f}%")
+            st.metric(
+                "Prediction Confidence",
+                f"{confidence:.2f}%"
+            )
+            st.progress(min(confidence / 100, 1.0))
 
         st.info(
             "⚠️ This prediction is for educational purposes only "
             "and should not replace professional medical advice."
         )
 
-                # Preventive recommendations
+        # Preventive recommendations
         recommendations = {
             "Fungal infection": [
                 "Keep the affected area clean and dry.",
@@ -80,28 +114,62 @@ if st.button("🔍 Predict Disease"):
             ]
         }
 
-        if disease in recommendations:
-            st.subheader("🛡️ Preventive Guidance")
+        st.subheader("🛡️ Preventive Guidance")
 
+        if disease in recommendations:
             for advice in recommendations[disease]:
                 st.write("• " + advice)
-
-        else:
-            st.subheader("🛡️ Preventive Guidance")
-                    # Disease information
-        disease_info = {
-            "Fungal infection": "A fungal infection is caused by fungi and can affect the skin or other parts of the body.",
-            "Allergy": "An allergy happens when the immune system reacts to a substance that is usually harmless.",
-            "GERD": "GERD is a condition where stomach contents frequently flow back into the esophagus."
-        }
-
-        st.subheader("📖 About the Predicted Disease")
-
-        if disease in disease_info:
-            st.write(disease_info[disease])
         else:
             st.write(
-                "Information about this condition is not currently available. "
-                "Please consult a qualified healthcare professional."
+                "Please consult a healthcare professional for "
+                "appropriate preventive advice."
             )
 
+# AI Health Chatbot
+st.divider()
+
+st.subheader("🤖 AI Health Assistant")
+st.write("Ask a general health question. This chatbot provides educational information only.")
+
+user_question = st.text_input(
+    "What would you like to know?",
+    placeholder="Example: What are common allergy symptoms?"
+)
+
+if st.button("💬 Ask AI"):
+
+    if not user_question.strip():
+        st.warning("Please enter a question.")
+
+    else:
+        try:
+            response = client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "You are a helpful health education assistant. "
+                            "Give clear, simple, general health information. "
+                            "Do not diagnose users or replace a doctor. "
+                            "If a user describes serious or urgent symptoms, "
+                            "recommend seeking immediate professional medical help."
+                        )
+                    },
+                    {
+                        "role": "user",
+                        "content": user_question
+                    }
+                ],
+                temperature=0.3,
+                max_tokens=500
+            )
+
+            answer = response.choices[0].message.content
+
+            st.write("### 💡 AI Response")
+            st.write(answer)
+
+        except Exception as e:
+            st.error("The AI assistant could not respond right now.")
+            st.caption(str(e))
