@@ -43,7 +43,22 @@ if st.button("🔍 Predict Disease"):
         # Convert prediction to disease name
         disease = label_encoder.inverse_transform(prediction)[0]
 
+        # Get prediction confidence
+        if hasattr(model, "predict_proba"):
+            probabilities = model.predict_proba([input_data])[0]
+            confidence = max(probabilities) * 100
+        else:
+            confidence = None
+
         st.success(f"Predicted Disease: **{disease}**")
+
+        if confidence is not None:
+            st.metric("Prediction Confidence", f"{confidence:.2f}%")
+
+        st.info(
+            "⚠️ This prediction is for educational purposes only "
+            "and should not replace professional medical advice."
+        )
 
         st.info(
             "⚠️ This prediction is for educational purposes only "
