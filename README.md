@@ -25,6 +25,17 @@ AI-Powered Health Assistant is a machine learning-based web application that pre
 - `data/` – Dataset files
 - `requirements.txt` – Dependencies
 
+  ## Screenshots
+
+### Home Page
+![Home Page](screenshots/home.png)
+
+### Prediction Result
+![Prediction](screenshots/prediction.png)
+
+### AI Chatbot
+![Chatbot](screenshots/chatbot.png)
+
 ## Live Demo
 https://ai-powered-health-assistant-4nzwtih7l9vn5vp4appzkht.streamlit.app/ 
 
