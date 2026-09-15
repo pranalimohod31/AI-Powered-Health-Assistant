@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 import joblib
 from groq import Groq
@@ -660,6 +659,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-```
 
 
