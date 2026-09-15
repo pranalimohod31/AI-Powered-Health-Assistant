@@ -1,4 +1,4 @@
-```python
+
 import streamlit as st
 import joblib
 from groq import Groq
