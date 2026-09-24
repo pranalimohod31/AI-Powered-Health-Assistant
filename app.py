@@ -41,7 +41,7 @@ except Exception:
 # =========================================================
 
 if "page" not in st.session_state:
-    st.session_state.page = "Home"
+    st.session_state.page = "🏠 Home"
 
 if "prediction_history" not in st.session_state:
     st.session_state.prediction_history = []
@@ -54,17 +54,29 @@ st.markdown(
     """
     <style>
 
-    /* ---------- MAIN APP ---------- */
+    /* ==============================
+       MAIN APP
+       ============================== */
 
     .stApp {
         background:
-            radial-gradient(circle at top left, #e0f7f4 0%, transparent 35%),
-            radial-gradient(circle at bottom right, #dbeafe 0%, transparent 35%),
+            radial-gradient(
+                circle at top left,
+                #e0f7f4 0%,
+                transparent 35%
+            ),
+            radial-gradient(
+                circle at bottom right,
+                #dbeafe 0%,
+                transparent 35%
+            ),
             #f8fafc;
         color: #172033;
     }
 
-    /* ---------- TEXT ---------- */
+    /* ==============================
+       GENERAL TEXT
+       ============================== */
 
     .stApp p,
     .stApp span,
@@ -78,7 +90,9 @@ st.markdown(
         color: #172033;
     }
 
-    /* ---------- HERO ---------- */
+    /* ==============================
+       HERO
+       ============================== */
 
     .hero {
         background: linear-gradient(
@@ -87,81 +101,100 @@ st.markdown(
             #0d9488,
             #14b8a6
         );
+
         padding: 45px 35px;
         border-radius: 28px;
-        color: white;
         text-align: center;
         margin-bottom: 30px;
-        box-shadow: 0 12px 35px rgba(15,118,110,0.20);
-    }
 
-    .hero h1,
-    .hero p {
-        color: white !important;
+        box-shadow:
+            0 12px 35px rgba(15, 118, 110, 0.20);
     }
 
     .hero h1 {
+        color: white !important;
         font-size: 48px;
         margin-bottom: 10px;
     }
 
     .hero p {
+        color: white !important;
         font-size: 18px;
     }
 
-    /* ---------- OPTION CARDS ---------- */
+    /* ==============================
+       OPTION CARDS
+       ============================== */
 
     .option-card {
-        background: rgba(255,255,255,0.95);
+        background: rgba(255,255,255,0.96);
         padding: 25px;
         border-radius: 22px;
         min-height: 210px;
-        box-shadow: 0 7px 25px rgba(15,23,42,0.08);
+
+        box-shadow:
+            0 7px 25px rgba(15,23,42,0.08);
+
         border: 1px solid #e2e8f0;
         text-align: center;
+
         margin-bottom: 20px;
     }
 
-    .option-card h2,
-    .option-card h3,
-    .option-card p {
+    .option-card h3 {
         color: #172033 !important;
     }
 
-    .option-card:hover {
-        transform: translateY(-3px);
+    .option-card p {
+        color: #475569 !important;
     }
 
     .option-icon {
         font-size: 45px;
+        margin-bottom: 10px;
     }
 
-    /* ---------- INFO CARDS ---------- */
+    /* ==============================
+       INFORMATION CARDS
+       ============================== */
 
     .info-card {
         background: white;
         padding: 25px;
         border-radius: 20px;
+
         border-left: 5px solid #0f766e;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+
+        box-shadow:
+            0 5px 20px rgba(0,0,0,0.06);
+
         margin: 15px 0;
     }
 
-    .info-card h3,
+    .info-card h3 {
+        color: #0f766e !important;
+    }
+
     .info-card p {
         color: #172033 !important;
     }
 
-    /* ---------- RESULT ---------- */
+    /* ==============================
+       RESULT CARD
+       ============================== */
 
     .result-card {
         background: #ecfdf5;
         border: 2px solid #5eead4;
+
         padding: 30px;
         border-radius: 24px;
+
         text-align: center;
         margin: 25px 0;
-        box-shadow: 0 8px 25px rgba(15,118,110,0.10);
+
+        box-shadow:
+            0 8px 25px rgba(15,118,110,0.10);
     }
 
     .result-card h1,
@@ -170,13 +203,17 @@ st.markdown(
         color: #0f766e !important;
     }
 
-    /* ---------- EMERGENCY ---------- */
+    /* ==============================
+       EMERGENCY CARD
+       ============================== */
 
     .emergency-card {
         background: #fff1f2;
         border: 2px solid #fb7185;
+
         padding: 25px;
         border-radius: 22px;
+
         margin: 20px 0;
     }
 
@@ -186,7 +223,9 @@ st.markdown(
         color: #881337 !important;
     }
 
-    /* ---------- SIDEBAR ---------- */
+    /* ==============================
+       SIDEBAR
+       ============================== */
 
     section[data-testid="stSidebar"] {
         background: linear-gradient(
@@ -200,7 +239,9 @@ st.markdown(
         color: #172033;
     }
 
-    /* ---------- INPUTS ---------- */
+    /* ==============================
+       INPUTS
+       ============================== */
 
     div[data-baseweb="select"] > div,
     div[data-baseweb="input"] > div,
@@ -226,7 +267,9 @@ st.markdown(
         color: #172033 !important;
     }
 
-    /* ---------- BUTTONS ---------- */
+    /* ==============================
+       BUTTONS
+       ============================== */
 
     .stButton > button {
         border-radius: 13px;
@@ -234,21 +277,48 @@ st.markdown(
         min-height: 45px;
     }
 
-    /* ---------- METRICS ---------- */
+    /* ==============================
+       METRICS
+       ============================== */
 
     [data-testid="stMetric"] {
         background: white;
         padding: 15px;
         border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+        box-shadow:
+            0 4px 15px rgba(0,0,0,0.05);
     }
 
-    /* ---------- FOOTER ---------- */
+    /* ==============================
+       FOOTER
+       ============================== */
 
     .footer {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 18px;
+
         text-align: center;
-        padding: 30px;
-        color: #64748b;
+
+        color: #475569 !important;
+
+        border: 1px solid #e2e8f0;
+
+        box-shadow:
+            0 5px 20px rgba(0,0,0,0.05);
+
+        margin-top: 25px;
+    }
+
+    .footer strong {
+        color: #0f766e !important;
+        font-size: 18px;
+    }
+
+    .footer p {
+        color: #475569 !important;
+        margin: 7px 0;
     }
 
     </style>
@@ -257,7 +327,7 @@ st.markdown(
 )
 
 # =========================================================
-# SIDEBAR NAVIGATION
+# SIDEBAR
 # =========================================================
 
 with st.sidebar:
@@ -329,23 +399,28 @@ if st.session_state.page == "🏠 Home":
 
     st.write(
         "Choose a health service below to get started. "
-        "The platform combines machine learning, AI-powered "
-        "conversation and educational health resources."
+        "This platform combines machine learning, "
+        "artificial intelligence and educational health resources."
     )
 
     st.markdown("## ✨ What would you like help with?")
 
-    c1, c2, c3 = st.columns(3)
+    # -----------------------------------------------------
+    # ROW 1
+    # -----------------------------------------------------
 
-    with c1:
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+
         st.markdown(
             """
             <div class="option-card">
                 <div class="option-icon">🩺</div>
                 <h3>Symptom Checker</h3>
                 <p>
-                    Select your symptoms and get a possible
-                    condition prediction from the ML model.
+                    Select symptoms and explore a possible
+                    condition prediction using the ML model.
                 </p>
             </div>
             """,
@@ -357,18 +432,20 @@ if st.session_state.page == "🏠 Home":
             key="home_symptom",
             use_container_width=True
         ):
+
             st.session_state.page = "🩺 Symptom Checker"
             st.rerun()
 
-    with c2:
+    with col2:
+
         st.markdown(
             """
             <div class="option-card">
                 <div class="option-icon">❤️</div>
                 <h3>Health Risk</h3>
                 <p>
-                    Explore lifestyle and general health
-                    risk factors through educational questions.
+                    Explore general lifestyle and wellness
+                    risk factors.
                 </p>
             </div>
             """,
@@ -380,10 +457,12 @@ if st.session_state.page == "🏠 Home":
             key="home_risk",
             use_container_width=True
         ):
+
             st.session_state.page = "❤️ Health Risk"
             st.rerun()
 
-    with c3:
+    with col3:
+
         st.markdown(
             """
             <div class="option-card">
@@ -391,7 +470,7 @@ if st.session_state.page == "🏠 Home":
                 <h3>AI Health Chat</h3>
                 <p>
                     Ask general health questions and receive
-                    simple educational information.
+                    educational information.
                 </p>
             </div>
             """,
@@ -403,19 +482,25 @@ if st.session_state.page == "🏠 Home":
             key="home_chat",
             use_container_width=True
         ):
+
             st.session_state.page = "🤖 AI Health Chat"
             st.rerun()
 
-    c4, c5, c6 = st.columns(3)
+    # -----------------------------------------------------
+    # ROW 2
+    # -----------------------------------------------------
 
-    with c4:
+    col4, col5, col6 = st.columns(3)
+
+    with col4:
+
         st.markdown(
             """
             <div class="option-card">
                 <div class="option-icon">💊</div>
                 <h3>Medicine Info</h3>
                 <p>
-                    Learn general educational information
+                    Explore general educational information
                     about commonly used medicines.
                 </p>
             </div>
@@ -428,18 +513,20 @@ if st.session_state.page == "🏠 Home":
             key="home_medicine",
             use_container_width=True
         ):
+
             st.session_state.page = "💊 Medicine Info"
             st.rerun()
 
-    with c5:
+    with col5:
+
         st.markdown(
             """
             <div class="option-card">
                 <div class="option-icon">🥗</div>
                 <h3>Diet & Wellness</h3>
                 <p>
-                    Explore basic nutrition, hydration,
-                    exercise and lifestyle guidance.
+                    Explore nutrition, hydration, exercise
+                    and healthy lifestyle guidance.
                 </p>
             </div>
             """,
@@ -451,18 +538,20 @@ if st.session_state.page == "🏠 Home":
             key="home_diet",
             use_container_width=True
         ):
+
             st.session_state.page = "🥗 Diet & Wellness"
             st.rerun()
 
-    with c6:
+    with col6:
+
         st.markdown(
             """
             <div class="option-card">
                 <div class="option-icon">🧠</div>
                 <h3>Mental Wellness</h3>
                 <p>
-                    Explore simple stress-management and
-                    relaxation resources.
+                    Explore simple stress-management,
+                    relaxation and wellness resources.
                 </p>
             </div>
             """,
@@ -470,12 +559,17 @@ if st.session_state.page == "🏠 Home":
         )
 
         if st.button(
-            "Explore Wellness",
+            "Explore Mental Wellness",
             key="home_mental",
             use_container_width=True
         ):
+
             st.session_state.page = "🧠 Mental Wellness"
             st.rerun()
+
+    # -----------------------------------------------------
+    # SAFETY INFORMATION
+    # -----------------------------------------------------
 
     st.divider()
 
@@ -484,13 +578,55 @@ if st.session_state.page == "🏠 Home":
     p1, p2, p3 = st.columns(3)
 
     with p1:
-        st.info("🔒 **Privacy**\n\nAvoid entering sensitive personal information.")
+
+        st.info(
+            "🔒 **Privacy**\n\n"
+            "Avoid entering sensitive personal information."
+        )
 
     with p2:
-        st.info("🧠 **Educational AI**\n\nAI responses are informational, not diagnoses.")
+
+        st.info(
+            "🧠 **Educational AI**\n\n"
+            "AI responses are informational, not diagnoses."
+        )
 
     with p3:
-        st.info("👨‍⚕️ **Professional Care**\n\nConsult healthcare professionals for medical concerns.")
+
+        st.info(
+            "👨‍⚕️ **Professional Care**\n\n"
+            "Consult healthcare professionals for medical concerns."
+        )
+
+    # =====================================================
+    # FOOTER — HOME ONLY
+    # =====================================================
+
+    st.divider()
+
+    st.markdown(
+        """
+        <div class="footer">
+
+            <strong>🏥 AI-Powered Health Assistant</strong>
+
+            <p>
+                Machine Learning • Artificial Intelligence • Health Education
+            </p>
+
+            <p>
+                ⚠️ Educational project — not a substitute for
+                professional medical advice.
+            </p>
+
+            <p>
+                © 2026 AI Health Assistant
+            </p>
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # =========================================================
 # SYMPTOM CHECKER
@@ -537,6 +673,8 @@ elif st.session_state.page == "🩺 Symptom Checker":
             f"🩺 {len(selected_symptoms)} symptom(s) selected."
         )
 
+    st.markdown("")
+
     if st.button(
         "🔍 PREDICT POSSIBLE CONDITION",
         type="primary",
@@ -558,9 +696,12 @@ elif st.session_state.page == "🩺 Symptom Checker":
                 for symptom in selected_symptoms:
 
                     index = symptoms.index(symptom)
+
                     input_data[index] = 1
 
-                prediction = model.predict([input_data])
+                prediction = model.predict(
+                    [input_data]
+                )
 
                 disease = label_encoder.inverse_transform(
                     prediction
@@ -582,13 +723,16 @@ elif st.session_state.page == "🩺 Symptom Checker":
                     {
                         "Condition": disease,
                         "Symptoms": len(selected_symptoms),
-                        "Confidence": (
-                            f"{confidence:.2f}%"
-                            if confidence is not None
-                            else "N/A"
-                        )
+                        "Confidence":
+                            (
+                                f"{confidence:.2f}%"
+                                if confidence is not None
+                                else "N/A"
+                            )
                     }
                 )
+
+                # Result
 
                 st.markdown(
                     f"""
@@ -603,6 +747,8 @@ elif st.session_state.page == "🩺 Symptom Checker":
                     unsafe_allow_html=True
                 )
 
+                # Confidence
+
                 if confidence is not None:
 
                     st.markdown("### 📊 Model Confidence")
@@ -616,7 +762,7 @@ elif st.session_state.page == "🩺 Symptom Checker":
                         f"{confidence:.2f}%"
                     )
 
-                # Guidance database
+                # Recommendations
 
                 recommendations = {
 
@@ -647,7 +793,10 @@ elif st.session_state.page == "🩺 Symptom Checker":
                 if disease in recommendations:
 
                     for advice in recommendations[disease]:
-                        st.write(f"✅ {advice}")
+
+                        st.write(
+                            f"✅ {advice}"
+                        )
 
                 else:
 
@@ -673,8 +822,13 @@ elif st.session_state.page == "🩺 Symptom Checker":
 
             except Exception as e:
 
-                st.error("❌ Prediction failed.")
-                st.caption(f"Details: {e}")
+                st.error(
+                    "❌ Prediction failed."
+                )
+
+                st.caption(
+                    f"Details: {e}"
+                )
 
 # =========================================================
 # HEALTH RISK
@@ -687,7 +841,7 @@ elif st.session_state.page == "❤️ Health Risk":
         <div class="hero">
             <h1>❤️ Health Risk Assessment</h1>
             <p>
-                Explore general lifestyle and wellness risk factors.
+                Explore general lifestyle and wellness factors.
             </p>
         </div>
         """,
@@ -754,10 +908,14 @@ elif st.session_state.page == "❤️ Health Risk":
 
         if activity == "Mostly inactive":
             points += 2
+
         elif activity == "Occasionally active":
             points += 1
 
-        if sleep in ["5–6 hours", "Less than 5 hours"]:
+        if sleep in [
+            "5–6 hours",
+            "Less than 5 hours"
+        ]:
             points += 1
 
         if water == "Often inadequate":
@@ -765,15 +923,30 @@ elif st.session_state.page == "❤️ Health Risk":
 
         if smoking == "Regularly":
             points += 2
+
         elif smoking == "Occasionally":
             points += 1
 
         if points <= 1:
-            message = "Your selected lifestyle factors look relatively balanced."
+
+            message = (
+                "Your selected lifestyle factors "
+                "look relatively balanced."
+            )
+
         elif points <= 3:
-            message = "Some lifestyle areas may benefit from improvement."
+
+            message = (
+                "Some lifestyle areas may benefit "
+                "from improvement."
+            )
+
         else:
-            message = "Several lifestyle areas may benefit from attention."
+
+            message = (
+                "Several lifestyle areas may benefit "
+                "from attention."
+            )
 
         st.markdown(
             f"""
@@ -819,23 +992,38 @@ elif st.session_state.page == "💊 Medicine Info":
     medicine_data = {
 
         "Paracetamol": {
-            "use": "Commonly used for pain and fever.",
-            "precaution": "Excessive use can cause serious liver injury."
+            "use":
+                "Commonly used for pain and fever.",
+
+            "precaution":
+                "Excessive use can cause serious liver injury."
         },
 
         "Ibuprofen": {
-            "use": "Commonly used for pain, inflammation and fever.",
-            "precaution": "May not be suitable for everyone, including some people with stomach, kidney or cardiovascular conditions."
+            "use":
+                "Commonly used for pain, inflammation and fever.",
+
+            "precaution":
+                "May not be suitable for everyone, including some people "
+                "with stomach, kidney or cardiovascular conditions."
         },
 
         "Cetirizine": {
-            "use": "An antihistamine commonly used for allergy symptoms.",
-            "precaution": "May cause drowsiness in some people."
+            "use":
+                "An antihistamine commonly used for allergy symptoms.",
+
+            "precaution":
+                "May cause drowsiness in some people."
         },
 
         "Omeprazole": {
-            "use": "Reduces stomach acid and is commonly used for acid-related conditions.",
-            "precaution": "Persistent symptoms should be evaluated by a healthcare professional."
+            "use":
+                "Reduces stomach acid and is commonly used "
+                "for acid-related conditions.",
+
+            "precaution":
+                "Persistent symptoms should be evaluated "
+                "by a healthcare professional."
         }
     }
 
@@ -852,8 +1040,14 @@ elif st.session_state.page == "💊 Medicine Info":
             f"""
             <div class="info-card">
                 <h3>💊 {medicine}</h3>
-                <p><b>General use:</b> {data["use"]}</p>
-                <p><b>Important:</b> {data["precaution"]}</p>
+                <p>
+                    <b>General use:</b>
+                    {data["use"]}
+                </p>
+                <p>
+                    <b>Important:</b>
+                    {data["precaution"]}
+                </p>
             </div>
             """,
             unsafe_allow_html=True
@@ -925,10 +1119,15 @@ elif st.session_state.page == "🥗 Diet & Wellness":
         ]
     }
 
-    st.markdown(f"### 🌱 Suggestions for {goal}")
+    st.markdown(
+        f"### 🌱 Suggestions for {goal}"
+    )
 
     for item in advice[goal]:
-        st.success(f"✓ {item}")
+
+        st.success(
+            f"✓ {item}"
+        )
 
 # =========================================================
 # MENTAL WELLNESS
@@ -941,8 +1140,8 @@ elif st.session_state.page == "🧠 Mental Wellness":
         <div class="hero">
             <h1>🧠 Mental Wellness</h1>
             <p>
-                Simple tools for relaxation, reflection and
-                everyday stress management.
+                Simple tools for relaxation, reflection
+                and everyday stress management.
             </p>
         </div>
         """,
@@ -960,7 +1159,9 @@ elif st.session_state.page == "🧠 Mental Wellness":
         ]
     )
 
-    st.write(f"Current selection: **{mood}**")
+    st.write(
+        f"Current selection: **{mood}**"
+    )
 
     st.markdown("### 🌿 Quick Relaxation Exercise")
 
@@ -1078,21 +1279,26 @@ elif st.session_state.page == "🤖 AI Health Chat":
                         max_tokens=600
                     )
 
-                    answer = response.choices[0].message.content
+                    answer = response.choices[
+                        0
+                    ].message.content
 
-                    st.markdown("### 💡 AI Response")
+                    st.markdown(
+                        "### 💡 AI Response"
+                    )
 
                     st.markdown(
                         f"""
                         <div class="info-card">
-                            {answer}
+                            <p>{answer}</p>
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
 
                     st.caption(
-                        "ℹ️ AI-generated information is for educational purposes only."
+                        "ℹ️ AI-generated information is "
+                        "for educational purposes only."
                     )
 
                 except Exception as e:
@@ -1134,7 +1340,9 @@ elif st.session_state.page == "📊 Health Dashboard":
 
     if total_checks > 0:
 
-        st.markdown("### 📋 Recent Predictions")
+        st.markdown(
+            "### 📋 Recent Predictions"
+        )
 
         for item in reversed(
             st.session_state.prediction_history
@@ -1143,13 +1351,21 @@ elif st.session_state.page == "📊 Health Dashboard":
             st.markdown(
                 f"""
                 <div class="info-card">
-                    <h3>🔎 {item["Condition"]}</h3>
+
+                    <h3>
+                        🔎 {item["Condition"]}
+                    </h3>
+
                     <p>
-                        Symptoms selected: {item["Symptoms"]}
+                        Symptoms selected:
+                        {item["Symptoms"]}
                     </p>
+
                     <p>
-                        Model confidence: {item["Confidence"]}
+                        Model confidence:
+                        {item["Confidence"]}
                     </p>
+
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -1184,24 +1400,32 @@ elif st.session_state.page == "🚨 Emergency Guide":
         """
         <div class="emergency-card">
 
-        <h2>🚨 Seek Emergency Medical Help</h2>
+            <h2>🚨 Seek Emergency Medical Help</h2>
 
-        <p>Urgent medical assessment may be needed for symptoms such as:</p>
+            <p>
+                Urgent medical assessment may be needed for symptoms such as:
+            </p>
 
-        <ul>
-            <li>Severe difficulty breathing</li>
-            <li>Severe or persistent chest pain</li>
-            <li>Sudden loss of consciousness</li>
-            <li>Signs of a stroke such as sudden weakness or difficulty speaking</li>
-            <li>Severe bleeding</li>
-            <li>Severe allergic reaction with breathing difficulty or swelling</li>
-        </ul>
+            <ul>
+                <li>Severe difficulty breathing</li>
+                <li>Severe or persistent chest pain</li>
+                <li>Sudden loss of consciousness</li>
+                <li>
+                    Signs of a stroke such as sudden weakness
+                    or difficulty speaking
+                </li>
+                <li>Severe bleeding</li>
+                <li>
+                    Severe allergic reaction with breathing
+                    difficulty or swelling
+                </li>
+            </ul>
 
-        <p>
-        If you believe you are experiencing a medical emergency,
-        contact your local emergency service or seek immediate
-        medical attention.
-        </p>
+            <p>
+                If you believe you are experiencing a medical emergency,
+                contact your local emergency service or seek immediate
+                medical attention.
+            </p>
 
         </div>
         """,
@@ -1230,15 +1454,19 @@ elif st.session_state.page == "ℹ️ About":
         unsafe_allow_html=True
     )
 
-    st.markdown("## 🎯 Project Objective")
+    st.markdown(
+        "## 🎯 Project Objective"
+    )
 
     st.write(
         "The AI Health Assistant is an educational application "
-        "that combines machine learning and generative AI to "
-        "provide users with accessible health information."
+        "that combines machine learning and generative AI "
+        "to provide users with accessible health information."
     )
 
-    st.markdown("## 🧠 Technologies Used")
+    st.markdown(
+        "## 🧠 Technologies Used"
+    )
 
     c1, c2, c3, c4 = st.columns(4)
 
@@ -1254,42 +1482,31 @@ elif st.session_state.page == "ℹ️ About":
     with c4:
         st.info("🌐 Streamlit")
 
-    st.markdown("## 🔬 Main Components")
+    st.markdown(
+        "## 🔬 Main Components"
+    )
 
-    st.write("• Machine Learning disease prediction")
-    st.write("• Symptom-based analysis")
-    st.write("• Generative AI health chatbot")
-    st.write("• Educational health resources")
-    st.write("• Lifestyle guidance")
-    st.write("• Session-based prediction history")
+    st.write(
+        "• Machine Learning disease prediction"
+    )
 
-# =========================================================
-# FOOTER
-# =========================================================
+    st.write(
+        "• Symptom-based analysis"
+    )
 
-st.divider()
+    st.write(
+        "• Generative AI health chatbot"
+    )
 
-st.markdown(
-    """
-    <div class="footer">
+    st.write(
+        "• Educational health resources"
+    )
 
-        <b>🏥 AI-Powered Health Assistant</b>
+    st.write(
+        "• Lifestyle guidance"
+    )
 
-        <br><br>
-
-        Machine Learning • Artificial Intelligence • Health Education
-
-        <br><br>
-
-        ⚠️ Educational project — not a substitute for professional medical advice.
-
-        <br><br>
-
-        © 2026 AI Health Assistant
-
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
+    st.write(
+        "• Session-based prediction history"
+    )
 
