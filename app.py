@@ -491,7 +491,7 @@ if st.button(
             # =================================================
 
             st.markdown(
-                """
+                
                 <div class="warning">
                     <h3>⚠️ Important Health Notice</h3>
 
@@ -507,7 +507,7 @@ if st.button(
                     evaluation and treatment.
                     </p>
                 </div>
-                """,
+                
                 unsafe_allow_html=True
             )
 
@@ -672,7 +672,7 @@ if st.button(
 st.divider()
 
 st.markdown(
-    textwrap.dedent("""
+    textwrap.dedent(
     <div class="warning">
 
         <h3>🚨 Emergency Medical Help</h3>
@@ -689,7 +689,7 @@ st.markdown(
         </p>
 
     </div>
-    """),
+    ),
     unsafe_allow_html=True
 )
 
