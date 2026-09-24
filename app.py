@@ -1,4 +1,5 @@
 import streamlit as st
+import textwrap
 import joblib
 from groq import Groq
 
@@ -39,7 +40,7 @@ except Exception:
 # =========================================================
 
 st.markdown(
-    """
+    textwrap.dedent("""
     <style>
 
     .stApp {
@@ -184,7 +185,7 @@ st.markdown(
     }
 
     </style>
-    """,
+    """),
     unsafe_allow_html=True
 )
 
@@ -195,13 +196,13 @@ st.markdown(
 with st.sidebar:
 
     st.markdown(
-        """
+        textwrap.dedent("""
         <div style="text-align:center;">
             <div style="font-size:60px;">🏥</div>
             <h2>AI Health Assistant</h2>
             <p>Smart • Simple • Educational</p>
         </div>
-        """,
+        """),
         unsafe_allow_html=True
     )
 
@@ -237,7 +238,7 @@ with st.sidebar:
 # =========================================================
 
 st.markdown(
-    """
+    textwrap.dedent("""
     <div class="main-title">
         <h1>🏥 AI Health Assistant</h1>
         <p>
@@ -245,7 +246,7 @@ st.markdown(
             and get simple educational health information.
         </p>
     </div>
-    """,
+    """),
     unsafe_allow_html=True
 )
 
@@ -259,7 +260,7 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown(
-        """
+        textwrap.dedent("""
         <div class="feature">
             <h2>🩺</h2>
             <h3>Symptom Checker</h3>
@@ -268,13 +269,13 @@ with col1:
                 to predict a possible condition.
             </p>
         </div>
-        """,
+        """),
         unsafe_allow_html=True
     )
 
 with col2:
     st.markdown(
-        """
+        textwrap.dedent("""
         <div class="feature">
             <h2>📊</h2>
             <h3>Prediction</h3>
@@ -283,13 +284,13 @@ with col2:
                 when available.
             </p>
         </div>
-        """,
+        """),
         unsafe_allow_html=True
     )
 
 with col3:
     st.markdown(
-        """
+        textwrap.dedent("""
         <div class="feature">
             <h2>🤖</h2>
             <h3>AI Health Chat</h3>
@@ -298,7 +299,7 @@ with col3:
                 educational information.
             </p>
         </div>
-        """,
+        """),
         unsafe_allow_html=True
     )
 
@@ -529,7 +530,7 @@ c1, c2, c3 = st.columns(3)
 with c1:
 
     st.markdown(
-        """
+        textwrap.dedent("""
         <div class="feature">
             <h2>1️⃣</h2>
             <h3>Select Symptoms</h3>
@@ -538,14 +539,14 @@ with c1:
                 symptom database.
             </p>
         </div>
-        """,
+        """),
         unsafe_allow_html=True
     )
 
 with c2:
 
     st.markdown(
-        """
+        textwrap.dedent("""
         <div class="feature">
             <h2>2️⃣</h2>
             <h3>Machine Learning</h3>
@@ -554,14 +555,14 @@ with c2:
                 numerical input for the trained model.
             </p>
         </div>
-        """,
+        """),
         unsafe_allow_html=True
     )
 
 with c3:
 
     st.markdown(
-        """
+        textwrap.dedent("""
         <div class="feature">
             <h2>3️⃣</h2>
             <h3>Prediction</h3>
@@ -570,7 +571,7 @@ with c3:
                 based on the selected symptoms.
             </p>
         </div>
-        """,
+        """),
         unsafe_allow_html=True
     )
 
@@ -671,7 +672,7 @@ if st.button(
 st.divider()
 
 st.markdown(
-    """
+    textwrap.dedent("""
     <div class="warning">
 
         <h3>🚨 Emergency Medical Help</h3>
@@ -688,7 +689,7 @@ st.markdown(
         </p>
 
     </div>
-    """,
+    """),
     unsafe_allow_html=True
 )
 
@@ -712,13 +713,13 @@ for col, tip in zip(cols, tips):
     with col:
 
         st.markdown(
-            f"""
+            textwrap.dedent(f"""
             <div class="feature">
                 <h2>{tip[0]}</h2>
                 <h3>{tip[1]}</h3>
                 <p>{tip[2]}</p>
             </div>
-            """,
+            """),
             unsafe_allow_html=True
         )
 
@@ -729,7 +730,7 @@ for col, tip in zip(cols, tips):
 st.divider()
 
 st.markdown(
-    """
+    textwrap.dedent("""
     <div style="text-align:center; padding:20px; color:#64748b;">
         <b>🏥 AI-Powered Health Assistant</b>
         <br><br>
@@ -737,7 +738,6 @@ st.markdown(
         <br><br>
         © 2026 AI Health Assistant | Educational Project
     </div>
-    """,
+    """),
     unsafe_allow_html=True
 )
-
