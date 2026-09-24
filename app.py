@@ -22,7 +22,7 @@ try:
     symptoms = joblib.load("models/symptoms.pkl")
 except Exception as e:
     st.error("❌ Model files could not be loaded.")
-    st.code(str(e))
+    st.caption(f"Details: {e}")
     st.stop()
 
 # =========================================================
@@ -44,6 +44,87 @@ st.markdown(
 
     .stApp {
         background: linear-gradient(135deg, #f8fbff, #eef7f6);
+        color: #172033;
+    }
+
+    /* Global text contrast */
+    .stApp p,
+    .stApp span,
+    .stApp label,
+    .stApp div,
+    .stApp h1,
+    .stApp h2,
+    .stApp h3,
+    .stApp h4,
+    .stApp h5,
+    .stApp h6 {
+        color: #172033;
+    }
+
+    /* Keep icons/emoji visually natural */
+    .main-title h1,
+    .main-title p,
+    .main-title {
+        color: #ffffff !important;
+    }
+
+    /* Streamlit inputs */
+    div[data-baseweb="select"] > div,
+    div[data-baseweb="input"] > div,
+    div[data-baseweb="textarea"] > div {
+        background-color: #ffffff !important;
+        border-color: #cbd5e1 !important;
+    }
+
+    div[data-baseweb="select"] input,
+    div[data-baseweb="input"] input,
+    textarea {
+        color: #172033 !important;
+        -webkit-text-fill-color: #172033 !important;
+    }
+
+    div[data-baseweb="select"] span {
+        color: #172033 !important;
+    }
+
+    /* Dropdown menu */
+    ul[role="listbox"],
+    ul[role="listbox"] li {
+        background-color: #ffffff !important;
+        color: #172033 !important;
+    }
+
+    /* White cards need dark text */
+    .card,
+    .feature {
+        color: #172033 !important;
+    }
+
+    .card *,
+    .feature * {
+        color: #172033 !important;
+    }
+
+    /* Result card keeps its heading readable */
+    .result h1,
+    .result h2,
+    .result p {
+        color: #0f766e !important;
+    }
+
+    /* Sidebar readability */
+    section[data-testid="stSidebar"] {
+        background-color: #f8fafc;
+    }
+
+    section[data-testid="stSidebar"] * {
+        color: #172033;
+    }
+
+    /* Buttons */
+    .stButton > button {
+        font-weight: 700;
+        border-radius: 12px;
     }
 
     .main-title {
@@ -433,7 +514,7 @@ if st.button(
 
             st.error("❌ Prediction failed.")
 
-            st.code(str(e))
+            st.caption(f"Details: {e}")
 
 # =========================================================
 # HOW IT WORKS
@@ -581,7 +662,7 @@ if st.button(
                     "❌ The AI assistant could not respond."
                 )
 
-                st.code(str(e))
+                st.caption(f"Details: {e}")
 
 # =========================================================
 # EMERGENCY SECTION
@@ -659,5 +740,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
